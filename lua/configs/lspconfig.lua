@@ -22,3 +22,12 @@ end
 --   on_init = nvlsp.on_init,
 --   capabilities = nvlsp.capabilities,
 -- }
+
+-- AÖ added ============================================================
+lspconfig.clangd.setup {
+  on_attach = function(client, bufnr)
+    client.server_capabilities.signatureHelpProvider = false
+    nvlsp.on_attach(client, bufnr)
+  end,
+  capabilities = nvlsp.capabilities,
+}
