@@ -20,10 +20,23 @@ vim.api.nvim_create_autocmd('VimEnter', {
   command = [[highlight CursorLine gui=underline cterm=underline]]
 })
 
-vim.api.nvim_create_autocmd('VimEnter', {
-  command = "highlight ExtraWhitespace ctermbg=red guibg=#663333" ..
-            "| match ExtraWhitespace /\\s\\+$/"
-})
+-- highlight trailing spaces
+vim.wo.list = true
+-- vim.wo.listchars = "eol:↵,trail:·,tab:>-,nbsp:␣"
+vim.wo.listchars = "trail:·,tab:⏵ ,nbsp:␣"
+
+-- vim.api.nvim_create_autocmd("FileType", {
+-- 	pattern = "cpp, xml",
+-- 	 command = "highlight ExtraWhitespace ctermbg=red guibg=#663333" ..
+--               "| match ExtraWhitespace /\\s\\+$/"
+--     pattern = "*",
+--     callback = function()
+--         if vim.bo.modifiable then
+--             vim.command( "set listchars=eol:↵,trail:·,tab:>-,nbsp:␣") -- did not work
+--         end
+--       end
+--         do the rest of the callback
+-- })
 
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "cpp",
