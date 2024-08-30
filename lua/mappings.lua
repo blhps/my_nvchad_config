@@ -9,6 +9,11 @@ map("i", "jk", "<ESC>")
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 
+-- AÖ added ============================================================
+-- Disable some defaults:
+map( "n", "<leader>v", "", { })
+map( "n", "<leader>h", "", { })
+
 map( { "i", "n" }, "<C-a>", "<esc> <cmd> ClangdSwitchSourceHeader <CR>", { desc = "Switch betwwen header and source" })
 map("i", "<C-s>", "<esc> <cmd> w <CR> gi", { desc = "Save buffer" })
 map("i", "<A-j>", "<esc> <C-e> gi", { desc = "Scroll down" })
@@ -60,6 +65,10 @@ map("n", "<leader>gg", "<cmd> Neogit <CR>", { desc ="Open Neogit" })
 
 map("n", "<F2>", "@a",  { desc ="Run the macro in register a" })
 
+map({ "n", "t" }, "<A-v>", function()
+  require("nvchad.term").toggle { pos = "vsp", id = "vtoggleTerm", size=0.4 }
+end, { desc = "terminal toggleable vertical term" })
+
 map("n", "<leader><lt>",
       function()
         local curr_line = vim.api.nvim_get_current_line()
@@ -95,3 +104,90 @@ map("n", "<leader><lt>",
         return ""
       end,
       { desc ="Align cursor to the first non-space char above"})
+
+-- DAP
+map("n", "<F5>", "<cmd> DapContinue <CR>", { desc = "DAP: Start or continue the debugger", })
+map("n", "<F6>", "<cmd> DapStepOver <CR>", { desc = "DAP: Step over the expression", })
+map("n", "<F7>", "<cmd> DapStepInto <CR>", { desc = "DAP: Step into the expression", })
+map("n", "<F8>", "<cmd> DapStepOut <CR>", { desc = "DAP: Step out of the expression", })
+map("n", "<F9>", "<cmd> DapTerminate <CR>", { desc = "DAP: Terminate debugging", })
+map("n", "<leader>db", "<cmd> DapToggleBreakpoint <CR>", { desc = "DAP: Add breakpoint at line", })
+map("n", "<leader>dut", ":lua require('dapui').toggle() <CR>", { desc = "DAP: Toggle Dap-UI", })
+map("n", "<leader>i",
+      function()
+        require("dapui").eval()
+      end,
+      -- ":lua require('dap.ui.variables').hover() <CR>",
+      { desc = "Inspect the variable at cursor"})
+map("n", "<leader>dsu", ":lua require('dap').up() <CR>", { desc = "DAP: Go up in debug stack", })
+map("n", "<leader>dsd", ":lua require('dap').down() <CR>", { desc = "DAP: Go down in debug stack", })
+
+-- LSP
+map("n", "<leader>gE",
+      function()
+        vim.diagnostic.goto_prev { float = { border = "rounded" } }
+      end,
+      { desc = "LSP: Goto prev", })
+map("n", "<leader>ge",
+      function()
+        vim.diagnostic.goto_next { float = { border = "rounded" } }
+      end,
+      { desc = "LSP: Goto next", })
+
+-- GITSIGNS
+-- Navigation through hunks
+map("n", "<leader>gh",
+      function()
+        if vim.wo.diff then
+          return "]c"
+        end
+        vim.schedule(function()
+          require("gitsigns").next_hunk()
+        end)
+        return "<Ignore>"
+      end,
+      { desc = "GITSIGNS: Jump to next hunk",
+        -- opts = { expr = true },
+      })
+map("n", "<leader>gH",
+      function()
+        if vim.wo.diff then
+          return "[c"
+        end
+        vim.schedule(function()
+          require("gitsigns").prev_hunk()
+        end)
+        return "<Ignore>"
+      end,
+      { desc = "GITSIGNS: Jump to prev hunk",
+        -- opts = { expr = true },
+    })
+-- Actions
+map("n", "<leader>rh", function() require("gitsigns").reset_hunk() end, { desc = "GITSIGNS: Reset hunk", })
+
+map("n", "<cmd>reset_buf <CR>", function() require("gitsigns").reset_buffer() end, { desc = "GITSIGNS: Reset buffer", })
+
+map("n", "<leader>ph", function() require("gitsigns").preview_hunk() end, { desc = "GITSIGNS: Preview hunk", })
+
+map("n", "<leader>gs", function() require("gitsigns").stage_hunk() end, { desc = "GITSIGNS: Stage hunk", })
+
+map("n", "<leader>gS", function() package.loaded.gitsigns.undo_stage_hunk() end, { desc = "GITSIGNS: Unstage hunk", })
+
+-- map("n", "<leader>gb", function() package.loaded.gitsigns.blame_line() end, { desc = "Blame line", })
+
+    -- ["<leader>gdt", function() package.loaded.gitsigns.diffthis() end, { desc = "Diffthis", })
+map("n", "<leader>dv", "<cmd> DiffviewOpen <CR>", { desc = "GITSIGNS: Open Diffview", })
+map("n", "<leader>dx", "<cmd> DiffviewClose <CR>", { desc = "GITSIGNS: Close Diffview", })
+
+map("n", "<leader>td", function() require("gitsigns").toggle_deleted() end, { desc = "GITSIGNS: Toggle deleted", })
+
+map("n", "<cmd> stage_buf <CR>", function() require("gitsigns").stage_buffer() end, { desc = "GITSIGNS: Stage buffer", })
+
+-- TELESCOPE
+map("n", "<leader>fd", "<cmd> Telescope diagnostics <CR>", { desc = "TELESCOPE: Find LSP output" })
+map("n", "<leader>frb", "<cmd> Telescope lsp_document_symbols symbol_width=50 <CR>", { desc = "TELESCOPE: Lists LSP document symbols in the current buffer" })
+map("n", "<leader>frw", "<cmd> Telescope lsp_workspace_symbols symbol_width=50 <CR>", { desc = "TELESCOPE: Lists LSP document symbols in the current workspace" })
+map("n", "<leader>gr", "<cmd> Telescope lsp_references <CR>", { desc = "TELESCOPE: Lists LSP references for word under the cursor" })
+map("n", "<leader>gc", "<cmd> Telescope grep_string <CR>", { desc = "TELESCOPE: Find occurrences of the word at the cursor" })
+map("n", "<leader>km", "<cmd> Telescope keymaps <CR>", { desc = "TELESCOPE: Find keymaps" })
+map("v", "<leader>fw", "\"zy<cmd>exec 'Telescope grep_string default_text=' . escape(@z, ' ')<CR>", { desc = "TELESCOPE: Live Grep the selected text" })
