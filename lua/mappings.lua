@@ -11,8 +11,9 @@ map("i", "jk", "<ESC>")
 
 -- AÖ added ============================================================
 -- Disable some defaults:
-map( "n", "<leader>v", "", { })
-map( "n", "<leader>h", "", { })
+local nomap = vim.keymap.del
+nomap( "n", "<leader>v")
+nomap( "n", "<leader>h")
 
 map( { "i", "n" }, "<C-a>", "<esc> <cmd> ClangdSwitchSourceHeader <CR>", { desc = "Switch betwwen header and source" })
 map("i", "<C-s>", "<esc> <cmd> w <CR> gi", { desc = "Save buffer" })

@@ -229,9 +229,15 @@ return {
     "theHamsta/nvim-dap-virtual-text",
     config = function()
         require("nvim-dap-virtual-text").setup({
-        enabled = true,
-        all_references = true,
-        })
+          enabled = true,
+          all_references = true, })
       end,
+  },
+  {
+    'numToStr/Comment.nvim',
+    event = "VeryLazy",
+    opts = {
+        -- add any options here
+    }
   },
 }
