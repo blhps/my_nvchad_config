@@ -62,8 +62,6 @@ map("n", "<leader>ln", "<cmd> cnext <CR>", { desc ="Next item in the quick fix l
 map("n", "<leader>lp", "<cmd> cprevious <CR>", { desc ="Previous item in the quick fix list" })
 map("n", "<leader>lc", "<cmd> cclose <CR>", { desc ="Close the quick fix list" })
 
-map("n", "<leader>gg", "<cmd> Neogit <CR>", { desc ="Open Neogit" })
-
 map("n", "<F2>", "@a",  { desc ="Run the macro in register a" })
 
 map({ "n", "t" }, "<A-v>", function()
