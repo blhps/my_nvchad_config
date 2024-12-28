@@ -58,9 +58,10 @@ map("n", "<leader>tn", "<cmd> tabn <CR>", { desc ="Next tab" })
 map("n", "<leader>tp", "<cmd> tabp <CR>", { desc ="Previous tab" })
 map("n", "<leader>tc", "<cmd> tabc <CR>", { desc ="Close tab" })
 
+map("n", "<leader>lo", "<cmd> copen <CR>", { desc ="Open the quick fix list" })
+map("n", "<leader>lc", "<cmd> cclose <CR>", { desc ="Close the quick fix list" })
 map("n", "<leader>ln", "<cmd> cnext <CR>", { desc ="Next item in the quick fix list" })
 map("n", "<leader>lp", "<cmd> cprevious <CR>", { desc ="Previous item in the quick fix list" })
-map("n", "<leader>lc", "<cmd> cclose <CR>", { desc ="Close the quick fix list" })
 
 map("n", "<F2>", "@a",  { desc ="Run the macro in register a" })
 

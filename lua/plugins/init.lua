@@ -113,6 +113,10 @@ return {
     end
   },
   {
+    "igankevich/mesonic",
+    event = "VeryLazy",
+  },
+  {
     "nvim-treesitter/nvim-treesitter-context",
     version = "*",
     event = "VeryLazy",
@@ -191,20 +195,6 @@ return {
       },
     }
   },
-  -- {
-  --   "NeogitOrg/neogit",
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim",         -- required
-  --     "sindrets/diffview.nvim",        -- optional - Diff integration
-  --
-  --     "nvim-telescope/telescope.nvim", -- optional
-  --   },
-  --   event = "VeryLazy",
-  --   config = function()
-  --       require("neogit").setup({
-  --       })
-  --     end,
-  -- },
   {
     "williamboman/mason.nvim",
     opts = {
