@@ -192,3 +192,7 @@ map("n", "<leader>gc", "<cmd> Telescope grep_string <CR>", { desc = "TELESCOPE: 
 map("n", "<leader>km", "<cmd> Telescope keymaps <CR>", { desc = "TELESCOPE: Find keymaps" })
 map("v", "<leader>fw", "\"zy<cmd>exec 'Telescope grep_string default_text=' . escape(@z, ' ')<CR>", { desc = "TELESCOPE: Live Grep the selected text" })
 map("n", "<leader>j", "<cmd> Telescope jumplist <CR>", { desc = "TELESCOPE: jumplist" })
+
+-- LEAP
+map({"n", "x", "o"}, "m", "<Plug>(leap)")
+map("n", "M", "<Plug>(leap-from-window)")

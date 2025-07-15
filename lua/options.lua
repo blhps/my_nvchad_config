@@ -49,3 +49,6 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = "xml",
 	command = "setlocal foldmethod=indent"
 })
+
+-- leap
+vim.api.nvim_set_hl(0, 'LeapBackdrop', { link = 'Comment' })
