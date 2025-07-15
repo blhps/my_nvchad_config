@@ -2,8 +2,11 @@ require "nvchad.options"
 
 -- add yours here!
 
--- local o = vim.o
--- o.cursorlineopt ='both' -- to enable cursorline!
+vim.o.cursorlineopt ='both' -- to enable cursorline!
+-- stopped working for some reason:
+-- vim.api.nvim_create_autocmd('VimEnter', {
+--   command = [[highlight CursorLine gui=underline cterm=underline]]
+-- })
 
 vim.opt.colorcolumn = "100"
 -- vim.opt.autochdir = true
@@ -14,11 +17,6 @@ vim.o.guicursor = table.concat({
   "i-ci:ver25-Cursor/lCursor-blinkwait1000-blinkon100-blinkoff100",
   "r:hor50-Cursor/lCursor-blinkwait100-blinkon100-blinkoff100"
 }, ",")
-
-
-vim.api.nvim_create_autocmd('VimEnter', {
-  command = [[highlight CursorLine gui=underline cterm=underline]]
-})
 
 -- highlight trailing spaces
 vim.wo.list = true
