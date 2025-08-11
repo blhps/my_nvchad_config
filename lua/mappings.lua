@@ -194,5 +194,5 @@ map("v", "<leader>fw", "\"zy<cmd>exec 'Telescope grep_string default_text=' . es
 map("n", "<leader>j", "<cmd> Telescope jumplist <CR>", { desc = "TELESCOPE: jumplist" })
 
 -- LEAP
-map({"n", "x", "o"}, "m", "<Plug>(leap)")
-map("n", "M", "<Plug>(leap-from-window)")
+map({"n", "x", "o"}, "ö", "<Plug>(leap)")
+map("n", "Ö", "<Plug>(leap-from-window)")
