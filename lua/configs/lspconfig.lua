@@ -31,3 +31,5 @@ lspconfig.clangd.setup {
   end,
   capabilities = nvlsp.capabilities,
 }
+
+lspconfig.lemminx.setup{}
