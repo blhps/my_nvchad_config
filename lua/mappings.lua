@@ -196,3 +196,11 @@ map("n", "<leader>j", "<cmd> Telescope jumplist <CR>", { desc = "TELESCOPE: jump
 -- LEAP
 map({"n", "x", "o"}, "ö", "<Plug>(leap)")
 map("n", "Ö", "<Plug>(leap-from-window)")
+
+-- CONFORM
+-- Format current file
+map("n", "<leader>F", function() require("conform").format({ lsp_fallback = true }) end, { desc = "Format C++ file" })
+
+-- Format selection in visual mode
+map("v", "<leader>F", function() require("conform").format({ lsp_fallback = true }) end, { desc = "Format C++ selection" })
+

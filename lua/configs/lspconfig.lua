@@ -33,3 +33,5 @@ lspconfig.clangd.setup {
 }
 
 lspconfig.lemminx.setup{}
+
+lspconfig.pyright.setup{}
