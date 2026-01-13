@@ -50,5 +50,10 @@ vim.api.nvim_create_autocmd("FileType", {
 	command = "setlocal foldmethod=indent"
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "python",
+	command = "setlocal foldmethod=indent"
+})
+
 -- leap
 vim.api.nvim_set_hl(0, 'LeapBackdrop', { link = 'Comment' })
