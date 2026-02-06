@@ -23,6 +23,11 @@ vim.wo.list = true
 -- vim.wo.listchars = "eol:↵,trail:·,tab:>-,nbsp:␣"
 vim.wo.listchars = "trail:·,tab:⏵ ,nbsp:␣"
 
+vim.api.nvim_create_user_command('Wm', function()
+  vim.cmd('write')
+  vim.cmd('make')
+end, {})
+
 -- vim.api.nvim_create_autocmd("FileType", {
 -- 	pattern = "cpp, xml",
 -- 	 command = "highlight ExtraWhitespace ctermbg=red guibg=#663333" ..
