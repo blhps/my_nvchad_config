@@ -152,11 +152,24 @@ return {
                           -- { name = "G_ENABLE_DIAGNOSTIC", value = "1" }, },
         },
         {
+          name = 'Run Debug G_DEBUG',
+          type = 'codelldb',
+          request = 'launch',
+          program  ='${workspaceFolder}/build/lifeograph',
+          cwd = '${workspaceFolder}/build',
+          stopOnEntry = false,
+          args = {},
+          env = { LIFEOGRAPH_CONFIG_FILE = "${workspaceFolder}/../../materials/lifeo.conf.dev",
+                  G_DEBUG = "fatal-criticals" },
+          -- env = { { name = "LIFEOGRAPH_CONFIG_FILE", value = "${workspaceFolder}/../../materials/lifeo.conf.dev" },
+                          -- { name = "G_ENABLE_DIAGNOSTIC", value = "1" }, },
+        },
+        {
           name = 'Run Debug --force-welcome',
           type = 'codelldb',
           request = 'launch',
-          program  ='${workspaceFolder}/build_dbg/lifeograph',
-          cwd = '${workspaceFolder}/build_dbg',
+          program  ='${workspaceFolder}/build/lifeograph',
+          cwd = '${workspaceFolder}/build',
           stopOnEntry = false,
           args = { "--force-welcome" },
           env = { LIFEOGRAPH_CONFIG_FILE = "${workspaceFolder}/../../materials/lifeo.conf.dev" },
@@ -248,5 +261,19 @@ return {
       -- leap.add_default_mappings()
       leap.opts.case_sensitive = false
     end,
+  },
+  {
+    'godlygeek/tabular',
+    cmd = { 'Tabularize' },
+    keys = {
+      { '<leader>av',
+        function()
+          vim.cmd("'<,'>Tabularize /\\(\\S\\+\\(::\\S\\+\\)\\?\\)\\s\\+\\zs/l0")
+          vim.cmd("'<,'>Tabularize /=/l1")
+        end,
+        mode = 'v',
+        desc = 'Align variables fully'
+      },
+    },
   },
 }
