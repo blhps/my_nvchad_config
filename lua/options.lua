@@ -24,7 +24,7 @@ vim.wo.list = true
 vim.wo.listchars = "trail:·,tab:⏵ ,nbsp:␣"
 
 vim.api.nvim_create_user_command('Wm', function()
-  vim.cmd('write')
+  vim.cmd('wall')
   vim.cmd('make')
 end, {})
 
